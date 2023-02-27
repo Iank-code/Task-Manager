@@ -2,11 +2,12 @@ import FetchHook from "./hooks/Fetch.js";
 import React, { useState } from "react";
 
 function Home() {
-  const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/posts");
+  const [url, setUrl] = useState("http://localhost:9292/all");
 
   const { data, isLoading, error } = FetchHook(url);
   const handleButtonClick = () => {
-    setUrl("https://jsonplaceholder.typicode.com/comments");
+    // setUrl("https://jsonplaceholder.typicode.com/comments");
+    
   };
 
   if (isLoading) {
@@ -19,7 +20,7 @@ function Home() {
 
   return (
     <div>
-      <ul>{data && data.map((item) => <li key={item.id}>{item.title}</li>)}</ul>
+      <ul>{data && data.map((item) => <li key={item.id}>{item.name}</li>)}</ul>
       <button onClick={handleButtonClick}>Load Comments</button>
     </div>
   );
