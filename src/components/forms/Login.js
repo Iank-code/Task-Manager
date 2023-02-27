@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+
+  const navigate = useNavigate();
+
   const [email, setLoginEmail] = useState("");
   const [password, setLoginPassword] = useState("");
 
@@ -9,7 +13,12 @@ function Login() {
     console.log({ email, password });
     setLoginEmail("");
     setLoginPassword("");
+
+    
+    navigate("/");
   };
+
+  const gotoSignUpPage = () => navigate("/register");
   return (
     <div className="form" onSubmit={handleSubmit}>
       <h2>Login</h2>
@@ -35,6 +44,16 @@ function Login() {
         />
 
         <button>LOGIN</button>
+        <p>
+          Don't have an account?{" "}
+          <span
+            className="link"
+            onClick={gotoSignUpPage}
+            style={{ color: "red", cursor: "pointer" }}
+          >
+            Sign Up
+          </span>
+        </p>
       </form>
     </div>
   );

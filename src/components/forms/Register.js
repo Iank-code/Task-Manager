@@ -15,8 +15,13 @@ function Register() {
     setTel("");
     setUsername("");
     setPassword("");
+
+    
+    navigate("/");
   };
-  const gotoLoginPage = () => navigate("/");
+  const gotoLoginPage = () => {
+    navigate("/login");
+  };
 
   return (
     <div className="signup__container form">
@@ -62,7 +67,11 @@ function Register() {
         <button>SIGN UP</button>
         <p>
           Already have an account?{" "}
-          <span className="link" onClick={gotoLoginPage}>
+          <span
+            className="link"
+            onClick={gotoLoginPage}
+            style={{ color: "red", cursor: "pointer" }}
+          >
             Login
           </span>
         </p>
