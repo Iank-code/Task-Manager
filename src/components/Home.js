@@ -2,11 +2,15 @@ import FetchHook from "./hooks/Fetch.js";
 import NewTask from "./NewTask.js";
 import React, { useState } from "react";
 import List from "./List.js";
+import UpdateTask from "./UpdateTask";
 
 function Home() {
+  
+  
+
   const [url, setUrl] = useState("http://localhost:9292/all");
 
-  const [newTask, setNewTask ] = useState(false);
+  const [newTask, setNewTask] = useState(false);
   const { data, isLoading, error, setData } = FetchHook(url);
   if (isLoading) {
     return <div>Loading...</div>;
@@ -17,12 +21,12 @@ function Home() {
   }
 
   const deletePost = (id) => {
-    console.log(id)
+    console.log(id);
     fetch(`http://localhost:9292/delete/${id}`, {
       method: "DELETE",
-    })
-      .then((res) => res.json())
+    }).then((res) => res.json());
   };
+  
 
   return (
     <div
@@ -33,7 +37,7 @@ function Home() {
       }}
     >
       <button onClick={() => setNewTask(!newTask)}>Add Task</button>
-      {newTask ? <NewTask /> : "" }
+      {newTask ? <NewTask /> : ""}
 
       {data &&
         data.map((item) => {
@@ -41,6 +45,7 @@ function Home() {
             <List
               data={item}
               key={item.id}
+              id={item.id}
               deletePost={() => deletePost(item.id)}
             />
           );

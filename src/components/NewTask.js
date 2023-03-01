@@ -1,41 +1,56 @@
-import React, { useRef } from "react";
-import UsePost from "./hooks/UsePost";
+import React, { useState } from "react";
+// import UsePost from "./hooks/UsePost";
 
-function NewTask() {
-    const nameRef = useRef()
-    const categoryRef = useRef()
-    const descriptionRef = useRef();
+const NewTask = () => {
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+  const [error, setError] = useState(null);
 
-    
-    const submitTask = (e)=>{
-        e.preventDefault();
-        const body = {
-          name: nameRef.current.value,
-          category: categoryRef.current.value,
-          description: descriptionRef.current.value,
-        };
-
-        console.log(body)
-        const {error} = UsePost("http://localhost:9292/post", body)
-    }
+  const submitTask = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:9292/post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        category: category,
+        description: description,
+      }),
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
 
   return (
-    <div>
-      <form onSubmit={submitTask}>
-        <label>
-          Name: <input ref={nameRef} required />
-        </label>
-        <label>
-          Category: <input ref={categoryRef} />
-        </label>
-        <label>
-          Description: <input ref={descriptionRef} />
-        </label>
-
-        <button type="submit">Submit Task</button>
-      </form>
-    </div>
+    <form onSubmit={submitTask}>
+      <input
+        type="text"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button type="submit">Submit</button>
+      {/* {data && <p>Task created with ID: {data.id}</p>} */}
+      {error && <p>Error creating task: {error.message}</p>}
+    </form>
   );
-}
+};
 
 export default NewTask;
