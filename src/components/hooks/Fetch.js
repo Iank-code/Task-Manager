@@ -18,6 +18,7 @@ function Fetch(url) {
       })
       .then((data) => {
         setData(data);
+        console.log(data)
         setIsLoading(false);
       })
       .catch((err) => {
@@ -27,7 +28,7 @@ function Fetch(url) {
       });
   }, [url]);
 
-  return { data, isLoading, error };
+  return { data, isLoading, error, setData };
 }
 
 export default Fetch;

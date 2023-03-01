@@ -43,3 +43,17 @@ button{
   background-color: black;
   color: aliceblue;
 }
+.selectedList{
+  border: 1px solid #575454;
+  width: 15%;
+}
+.listSection{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 2rem;
+  margin: 2rem 0 0 4rem;
+  transition: ease-in-out;
+}
+.list:hover{
+  color: greenyellow;
+}
