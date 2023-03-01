@@ -15,25 +15,26 @@
   font-family: "Shantell Sans", cursive;
   font-weight: 600;
 }
-.Navbar > *:hover{
+.Navbar > *:hover {
   border-bottom: 1px solid black;
 }
-.form{
+.form {
   justify-content: center;
   align-items: center;
   margin-top: 5px;
 }
-.form, .form > *{
+.form,
+.form > * {
   display: flex;
   flex-direction: column;
 }
-.form input{
+.form input {
   width: 300px;
   padding: 1.5px 0;
   border-radius: 10px;
   outline: none;
 }
-button{
+button {
   border-radius: 6px;
   outline: none;
   width: 80px;
@@ -43,17 +44,34 @@ button{
   background-color: black;
   color: aliceblue;
 }
-.selectedList{
-  border: 1px solid #575454;
-  width: 15%;
+.selectedList {
+  border: 1px solid #00ff0d;
+  padding: 5px 8px;
+  border-radius: 6px;
 }
-.listSection{
+.listSection {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 2rem;
   margin: 2rem 0 0 4rem;
   transition: ease-in-out;
 }
-.list:hover{
+.list:hover {
   color: greenyellow;
+}
+.itemList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  align-items: center;
+}
+.itemList p:hover {
+  color: rgb(121, 190, 18);
+}
+table {
+  padding: 10px 0 20px 0;
+}
+td{
+  padding: 6px 15px 0 15px;
 }

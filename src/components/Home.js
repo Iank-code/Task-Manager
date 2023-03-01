@@ -2,12 +2,8 @@ import FetchHook from "./hooks/Fetch.js";
 import NewTask from "./NewTask.js";
 import React, { useState } from "react";
 import List from "./List.js";
-import UpdateTask from "./UpdateTask";
 
 function Home() {
-  
-  
-
   const [url, setUrl] = useState("http://localhost:9292/all");
 
   const [newTask, setNewTask] = useState(false);
@@ -25,8 +21,9 @@ function Home() {
     fetch(`http://localhost:9292/delete/${id}`, {
       method: "DELETE",
     }).then((res) => res.json());
+
+    window.location.reload();
   };
-  
 
   return (
     <div
@@ -39,17 +36,24 @@ function Home() {
       <button onClick={() => setNewTask(!newTask)}>Add Task</button>
       {newTask ? <NewTask /> : ""}
 
-      {data &&
-        data.map((item) => {
-          return (
-            <List
-              data={item}
-              key={item.id}
-              id={item.id}
-              deletePost={() => deletePost(item.id)}
-            />
-          );
-        })}
+      <div className="itemList">
+        {data &&
+          data.map((item) => {
+            return (
+              <List
+                data={item}
+                key={item.id}
+                id={item.id}
+                checkDone={(e)=>{
+                  if(e.target.checked){
+                    alert(`${item.name} Completed`)
+                  }
+                }}
+                deleteItem={() => deletePost(item.id)}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }

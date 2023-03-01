@@ -22,6 +22,9 @@ function UpdateTask({ id }) {
         r.json()
     })
       .catch((err) => console.log(err.message));
+
+
+    window.location.reload();
   };
   return (
     <>

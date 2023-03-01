@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import UsePost from "./hooks/UsePost";
 
 const NewTask = () => {
   const [name, setName] = useState("");
@@ -24,6 +23,8 @@ const NewTask = () => {
       .catch((error) => {
         console.error(error.message);
       });
+
+    // window.location.reload()
   };
 
   return (
