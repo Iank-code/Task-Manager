@@ -1,29 +1,24 @@
 import React, { useState } from "react";
+import UsePatch from "./hooks/UsePatch";
 
 function UpdateTask({ id }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+  const body = {
+    name: name,
+    description: description,
+  };
   const submitChanges = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:9292/patch/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        description: description,
-      }),
-    })
-      .then((r) => {
-        if (!r.ok) {
-          throw new Error(r.status);
-        }
-        r.json()
-    })
-      .catch((err) => console.log(err.message));
+    const { error } = UsePatch(
+      `http://localhost:9292/patch/${id}`,
+      body
+    );
 
-
+    if(error){
+      console.log(error)
+    }
     window.location.reload();
   };
   return (
