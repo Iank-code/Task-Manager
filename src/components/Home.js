@@ -69,7 +69,7 @@
 
 import FetchHook from "./hooks/Fetch.js";
 import NewTask from "./NewTask.js";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import List from "./List.js";
 
 function Home() {

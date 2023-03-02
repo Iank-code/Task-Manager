@@ -7,7 +7,15 @@ function Register() {
   const [tel, setTel] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  // For checking if password && confirmPassword matches
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // const [authenticated, setauthenticated] = useState(
+  //   localStorage.getItem(localStorage.getItem("authenticated") || false)
+  // );
+  // const users = [{ username: "Jane", password: "testpassword" }];
 
   // const handleSubmit = (e) => {
 
@@ -31,7 +39,7 @@ function Register() {
   //       phone_number: tel,
   //     }),
   //   }).then((res) => res.json());
-    
+
   //   alert("saved")
 
   //   navigate("/");
@@ -41,35 +49,41 @@ function Register() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
 
-    fetch("http://localhost:9292/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: username,
-        email: email,
-        password: password,
-        tel: tel,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Network response was not ok.");
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        alert("Registration successful.");
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Registration failed. Please try again.");
-      });
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    }
+    // fetch("http://localhost:9292/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     name: username,
+    //     email: email,
+    //     password: password,
+    //     tel: tel,
+    //   }),
+    // })
+    //   .then((res) => {
+    //     if (res.ok) {
+    //       return res.json();
+    //     } else {
+    //       throw new Error("Network response was not ok.");
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     alert("Registration successful.");
+    //     navigate("/");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //     alert("Registration failed. Please try again.");
+    //   });
   };
 
   return (
@@ -123,6 +137,7 @@ function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
+        {error && <p style={{color: "red"}}>{error}</p>}
         <button>SIGN UP</button>
         <p>
           Already have an account?{" "}
