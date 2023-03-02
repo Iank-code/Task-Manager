@@ -13,18 +13,12 @@ function List({ data, deleteItem, id, checkDone }) {
   };
 
   return (
-    <div
-      style={{
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <div className="List">
       <div
         style={{
           display: "flex",
           flexDirection: "row",
-          gap: '8px'
+          gap: "8px",
         }}
       >
         <p onClick={handleClick}>{data.name}</p>

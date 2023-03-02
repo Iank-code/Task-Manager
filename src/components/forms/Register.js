@@ -12,38 +12,6 @@ function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // const [authenticated, setauthenticated] = useState(
-  //   localStorage.getItem(localStorage.getItem("authenticated") || false)
-  // );
-  // const users = [{ username: "Jane", password: "testpassword" }];
-
-  // const handleSubmit = (e) => {
-
-  //   e.preventDefault();
-  //   // console.log({ email, username, tel, password, confirmPassword });
-  //   // setEmail("");
-  //   // setTel("");
-  //   // setUsername("");
-  //   // setPassword("");
-  //   // setConfirmPassword("");
-
-  //   fetch("http://localhost:9292/register", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       name: username,
-  //       email: email,
-  //       password: password,
-  //       phone_number: tel,
-  //     }),
-  //   }).then((res) => res.json());
-
-  //   alert("saved")
-
-  //   navigate("/");
-  // };
   const gotoLoginPage = () => {
     navigate("/login");
   };
@@ -55,35 +23,41 @@ function Register() {
       setTimeout(() => {
         setError("");
       }, 2000);
+    } else {
+      console.log({ email, username, tel, password, confirmPassword });
+
+
+      fetch("http://localhost:9292/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: username,
+          email: email,
+          password: password,
+          phone_number: tel,
+        }),
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Network response was not ok.");
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          alert("Registration successful.");
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Registration failed. Please try again.");
+        });
+  
+      // navigate("/");
     }
-    // fetch("http://localhost:9292/register", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     name: username,
-    //     email: email,
-    //     password: password,
-    //     tel: tel,
-    //   }),
-    // })
-    //   .then((res) => {
-    //     if (res.ok) {
-    //       return res.json();
-    //     } else {
-    //       throw new Error("Network response was not ok.");
-    //     }
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     alert("Registration successful.");
-    //     navigate("/");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //     alert("Registration failed. Please try again.");
-    //   });
   };
 
   return (
@@ -137,7 +111,7 @@ function Register() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        {error && <p style={{color: "red"}}>{error}</p>}
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <button>SIGN UP</button>
         <p>
           Already have an account?{" "}

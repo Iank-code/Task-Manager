@@ -24,7 +24,7 @@ const NewTask = () => {
         console.error(error.message);
       });
 
-    // window.location.reload()
+    window.location.reload();
   };
 
   return (

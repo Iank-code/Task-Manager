@@ -54,33 +54,49 @@ function Home() {
         flexDirection: "column",
       }}
     >
-      <button onClick={() => navigate("/register")}>Log Out</button>
+      <button
+        className="logOutBtn"
+        style={{
+          float: "left",
+        }}
+        onClick={() => navigate("/register")}
+      >
+        Log Out
+      </button>
       <button onClick={() => setNewTask(!newTask)}>Add Task</button>
-      <div>
-        <input
-          type="checkbox"
-          id="completedFilter"
-          name="completedFilter"
-          checked={completedFilter}
-          onChange={(e) => setCompletedFilter(e.target.checked)}
-        />
-        <label htmlFor="completedFilter">Show completed tasks only</label>
-      </div>
       {newTask ? <NewTask /> : ""}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "0 10px",
+        }}
+      >
+        <div>
+          <input
+            type="checkbox"
+            id="completedFilter"
+            name="completedFilter"
+            checked={completedFilter}
+            onChange={(e) => setCompletedFilter(e.target.checked)}
+          />
+          <label htmlFor="completedFilter">Show completed tasks only</label>
+        </div>
 
-      <div className="itemList">
-        {filteredData &&
-          filteredData.map((item) => {
-            return (
-              <List
-                data={item}
-                key={item.id}
-                id={item.id}
-                checkDone={() => toggleCompleted(item.id)}
-                deleteItem={() => deletePost(item.id)}
-              />
-            );
-          })}
+        <div className="itemList">
+          {filteredData &&
+            filteredData.map((item) => {
+              return (
+                <List
+                  data={item}
+                  key={item.id}
+                  id={item.id}
+                  checkDone={() => toggleCompleted(item.id)}
+                  deleteItem={() => deletePost(item.id)}
+                />
+              );
+            })}
+        </div>
       </div>
     </div>
   );

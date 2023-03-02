@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Fetch from "../hooks/Fetch.js";
 
 function Login() {
+  const { data, isLoading, error, setData } = Fetch(
+    "http://localhost:9292/credentials"
+  );
 
   const navigate = useNavigate();
 
@@ -10,12 +14,15 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password });
-    setLoginEmail("");
-    setLoginPassword("");
+    data.map((item) => {
+      if (email === item.email && password === item.password) {
+        alert("Success!");
+        setLoginEmail("");
+        setLoginPassword("");
 
-    
-    navigate("/");
+        navigate("/");
+      }
+    });
   };
 
   const gotoSignUpPage = () => navigate("/register");

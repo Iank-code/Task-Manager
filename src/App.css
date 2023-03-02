@@ -50,11 +50,15 @@ button {
   border-radius: 6px;
 }
 .listSection {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 2rem;
-  margin: 2rem 0 0 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
   transition: ease-in-out;
+}
+.listSection > * {
+  padding: 10px 0 0 0;
 }
 .list:hover {
   color: greenyellow;
@@ -63,7 +67,7 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-end;
   align-items: center;
 }
 .itemList p:hover {
@@ -72,6 +76,26 @@ button {
 table {
   padding: 10px 0 20px 0;
 }
-td{
+td {
   padding: 6px 15px 0 15px;
+}
+.List {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin-left: -8rem;
+}
+.logOutBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  outline: none;
+  align-items: center;
+  background: transparent;
+  color: #000;
+}
+.logOutBtn:hover {
+  color: #b91d1d;
+  border-color: #b91d1d;
+  font-size: 14px;
 }
