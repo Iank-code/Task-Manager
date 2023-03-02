@@ -71,8 +71,10 @@ import FetchHook from "./hooks/Fetch.js";
 import NewTask from "./NewTask.js";
 import React, { useState } from "react";
 import List from "./List.js";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate()
   const [url, setUrl] = useState("http://localhost:9292/all");
 
   const [newTask, setNewTask] = useState(false);
@@ -120,6 +122,7 @@ function Home() {
         flexDirection: "column",
       }}
     >
+      <button onClick={()=> navigate('/register')} >Log Out</button>
       <button onClick={() => setNewTask(!newTask)}>Add Task</button>
       <div>
         <input
