@@ -60,8 +60,19 @@ function Register() {
   };
 
   return (
-    <div className="signup__container form">
+    <div
+      style={{
+        marginBottom: "3rem",
+      }}
+      className="signup__container form"
+    >
       <h2>Sign up </h2>
+      <img
+        style={{
+          width: "350px",
+        }}
+        src={require("../../assets/up-amico.png")}
+      />
       <form className="signup__form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email Address</label>
         <input

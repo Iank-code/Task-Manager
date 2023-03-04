@@ -22,7 +22,7 @@ function Login() {
 
         navigate("/home");
       }
-      return null
+      return null;
     });
   };
 
@@ -30,6 +30,12 @@ function Login() {
   return (
     <div className="form" onSubmit={handleSubmit}>
       <h2>Login</h2>
+      <img
+        style={{
+          width: "350px",
+        }}
+        src={require("../../assets/login-cuate.png")}
+      />
       <form>
         <label htmlFor="email">Email Address</label>
         <input

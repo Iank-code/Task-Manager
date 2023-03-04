@@ -56,7 +56,8 @@ function Home() {
       }}
     >
       <h2>Welcome to Task Manager</h2>
-      {/* <p>Hello </p> */}
+      <h4>This is a platform where you can write tasks Which you plan to do</h4>
+      <img src={require("../assets/task-img.png")} />
       <button
         className="logOutBtn"
         style={{
@@ -66,11 +67,23 @@ function Home() {
       >
         Log Out
       </button>
-      <button style={{
-        backgroundColor: "transparent",
-        color: "black",
-        // padding
-      }} onClick={() => setNewTask(!newTask)}>Add Task</button>
+
+      <p
+        style={{
+          marginLeft: "-9rem",
+        }}
+      >
+        Click here to add task 👇
+      </p>
+      <button
+        style={{
+          backgroundColor: "transparent",
+          color: "black",
+        }}
+        onClick={() => setNewTask(!newTask)}
+      >
+        Add Task
+      </button>
       {newTask ? <NewTask /> : ""}
       <div
         style={{
