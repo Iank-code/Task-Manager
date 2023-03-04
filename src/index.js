@@ -15,9 +15,9 @@ root.render(
       <Nav />
 
       <Routes>
-        <Route path="/" exact="true" element={<App />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" exact="true" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<App />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

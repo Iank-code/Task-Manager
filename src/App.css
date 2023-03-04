@@ -99,3 +99,26 @@ td {
   border-color: #b91d1d;
   font-size: 14px;
 }
+.newTask{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.newTask button{
+  background-color: transparent;
+  color: #000;
+  transition: ease-in-out;
+}
+.newTask button:hover{
+  background-color: black;
+  color: white;
+}
+.newTask input{
+  border-radius: 5px;
+  line-height: 20px;
+}
+input{
+  outline: none;
+  align-items: center;
+  text-align: center;
+}

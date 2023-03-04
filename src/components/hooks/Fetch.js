@@ -9,7 +9,11 @@ function Fetch(url) {
     setIsLoading(true);
     setError(null);
 
-    fetch(url)
+    fetch(
+      url /*,{
+      mode: 'no-cors'
+    }*/
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error(res.status);
@@ -18,7 +22,7 @@ function Fetch(url) {
       })
       .then((data) => {
         setData(data);
-        console.log(data)
+        console.log(data);
         setIsLoading(false);
       })
       .catch((err) => {

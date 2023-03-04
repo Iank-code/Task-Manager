@@ -11,6 +11,7 @@ function Home() {
   const [completedFilter, setCompletedFilter] = useState(false);
   const { data, isLoading, error, setData } = FetchHook(
     "http://localhost:9292/all"
+    // "https://phase-3-sinatra-react-project-8k7sefi1v-iank-code.vercel.app/all"
   );
 
   if (isLoading) {
@@ -54,16 +55,22 @@ function Home() {
         flexDirection: "column",
       }}
     >
+      <h2>Welcome to Task Manager</h2>
+      {/* <p>Hello </p> */}
       <button
         className="logOutBtn"
         style={{
           float: "left",
         }}
-        onClick={() => navigate("/register")}
+        onClick={() => navigate("/")}
       >
         Log Out
       </button>
-      <button onClick={() => setNewTask(!newTask)}>Add Task</button>
+      <button style={{
+        backgroundColor: "transparent",
+        color: "black",
+        // padding
+      }} onClick={() => setNewTask(!newTask)}>Add Task</button>
       {newTask ? <NewTask /> : ""}
       <div
         style={{

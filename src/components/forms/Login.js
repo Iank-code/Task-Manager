@@ -20,12 +20,13 @@ function Login() {
         setLoginEmail("");
         setLoginPassword("");
 
-        navigate("/");
+        navigate("/home");
       }
+      return null
     });
   };
 
-  const gotoSignUpPage = () => navigate("/register");
+  const gotoSignUpPage = () => navigate("/");
   return (
     <div className="form" onSubmit={handleSubmit}>
       <h2>Login</h2>

@@ -49,14 +49,13 @@ function Register() {
         .then((data) => {
           console.log(data);
           alert("Registration successful.");
-          navigate("/");
+          navigate("/home");
         })
         .catch((error) => {
           console.error("Error:", error);
           alert("Registration failed. Please try again.");
         });
   
-      // navigate("/");
     }
   };
 

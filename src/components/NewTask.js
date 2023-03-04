@@ -28,7 +28,7 @@ const NewTask = () => {
   };
 
   return (
-    <form onSubmit={submitTask}>
+    <form onSubmit={submitTask} className="newTask">
       <input
         type="text"
         placeholder="Name"

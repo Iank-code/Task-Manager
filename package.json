@@ -12,6 +12,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "https://phase-3-sinatra-react-project-eosin.vercel.app/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
