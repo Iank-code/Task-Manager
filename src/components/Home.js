@@ -51,6 +51,7 @@ function Home() {
     <div
       className="listSection"
       style={{
+        marginBottom: "3rem",
         display: "flex",
         flexDirection: "column",
       }}
