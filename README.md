@@ -11,6 +11,16 @@ Run
         npm install
 in the terminal to install the required dependencies.
 
+You will also need to clone another repository responsible for all the backend activities.
+
+        git clone git@github.com:Iank-code/phase-3-sinatra-react-project.git
+
+        cd phase-3-sinatra-react-project
+
+        bundle install
+
+        bundle exec rake server
+
 ### `npm start`
 
 Runs the app in the development mode.\
