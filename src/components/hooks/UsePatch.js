@@ -19,7 +19,7 @@ function usePatch(url) {
         return r.json();
       })
       .then((data) => {
-        setPatchResponse(data.data);
+        setPatchResponse(data);
       })
       .catch((err) => {
         console.error(err.message);
