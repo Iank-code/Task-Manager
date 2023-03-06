@@ -4,7 +4,7 @@ import Fetch from "../hooks/Fetch.js";
 
 function Login() {
   const { data, isLoading, error, setData } = Fetch(
-    "http://localhost:9292/credentials"
+    "https://sinatra-web-app.onrender.com/credentials"
   );
 
   const navigate = useNavigate();

@@ -21,8 +21,8 @@ function Fetch(url) {
         return res.json();
       })
       .then((data) => {
-        setData(data);
-        console.log(data);
+        setData(data.data);
+        console.log(data.data);
         setIsLoading(false);
       })
       .catch((err) => {

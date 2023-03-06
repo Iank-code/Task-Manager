@@ -10,9 +10,10 @@ function Home() {
   const [newTask, setNewTask] = useState(false);
   const [completedFilter, setCompletedFilter] = useState(false);
   const { data, isLoading, error, setData } = FetchHook(
-    "http://localhost:9292/all"
+    "https://sinatra-web-app.onrender.com/all"
     // "https://phase-3-sinatra-react-project-8k7sefi1v-iank-code.vercel.app/all"
   );
+  console.log(data)
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -23,7 +24,7 @@ function Home() {
   }
 
   const deletePost = (id) => {
-    fetch(`http://localhost:9292/delete/${id}`, {
+    fetch(`https://sinatra-web-app.onrender.com/delete/${id}`, {
       method: "DELETE",
     }).then((res) => res.json());
     setData(data.filter((item) => item.id !== id));
@@ -58,7 +59,7 @@ function Home() {
     >
       <h2>Welcome to Task Manager</h2>
       <h4>This is a platform where you can write tasks Which you plan to do</h4>
-      <img src={require("../assets/task-img.png")} />
+      <img src={require("../assets/task-img.png")} alt="task_img" />
       <button
         className="logOutBtn"
         style={{

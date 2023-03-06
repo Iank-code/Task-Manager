@@ -8,7 +8,7 @@ const NewTask = () => {
 
   const submitTask = (e) => {
     e.preventDefault();
-    fetch("http://localhost:9292/post", {
+    fetch("https://sinatra-web-app.onrender.com/post", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

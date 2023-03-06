@@ -27,7 +27,7 @@ function Register() {
       console.log({ email, username, tel, password, confirmPassword });
 
 
-      fetch("http://localhost:9292/register", {
+      fetch("https://sinatra-web-app.onrender.com/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
