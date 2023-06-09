@@ -11,7 +11,6 @@ function Home() {
   const [completedFilter, setCompletedFilter] = useState(false);
   const { data, isLoading, error, setData } = FetchHook(
     "https://sinatra-web-app.onrender.com/all"
-    // "https://phase-3-sinatra-react-project-8k7sefi1v-iank-code.vercel.app/all"
   );
   console.log(data)
 
